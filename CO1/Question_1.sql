@@ -11,11 +11,11 @@ select * from department;
 describe department;
 alter table employee add foreign key(dept_no) references department(dept_no);
 
-insert into employee values(1,'jithin','2008-11-11','cherthala','2018-11-21',12323131,2,120000);
-insert into employee values(2,'Abhinand','2001-01-14','pathanamthitta','2018-11-21',4545131,2,120000),
-(3,'Hrishiraj GL','2001-12-09','banglore/tvm/kollam','2018-11-21',78793131,1,230000),
-(4,'Shiva','1998-01-23','tvm','2016-11-21',98723131,3,12000);
-insert into employee values(5,'Alan','2001-11-11','cherthala','2018-11-21',8111568424,5,120000);
+insert into employee values(1,'jithin','2008-11-11','cherthala','2018-11-21',12323131,2,5000);
+insert into employee values(2,'Abhinand','2001-01-14','pathanamthitta','2018-11-21',4545131,2,1000),
+(3,'Hrishiraj GL','2001-12-09','banglore/tvm/kollam','2018-11-21',78793131,1,3000),
+(4,'Shiva','1998-01-23','tvm','2016-11-21',98723131,3,4500);
+insert into employee values(5,'Alan','2001-11-11','cherthala','2018-11-21',8111568424,5,3000);
 
 insert into department values (1,'MCA','MCABLOCK'),
 (2,'BCA','BCABLOCK'),
@@ -39,6 +39,7 @@ alter table department DROP COLUMN location;
 -- Drop the tables
 drop table employee;
 drop table department;
+# drop table employee,department;
 
 -- Delete the database
 drop database organisation;
