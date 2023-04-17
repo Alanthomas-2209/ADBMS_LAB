@@ -80,3 +80,28 @@ select * from Display;
 -- select * from Display;
 -- create or replace view Display as(select product.PCODE,product.PNAME,order_product.NOU from product left join order_product on product.PCODE = order_product.PCODE  where product.PCODE = order_product.PCODE);
 
+-- g
+delimiter $$
+create procedure new_procedure(NEWCODE int) 
+
+ begin
+ select product.UNIT_PRICE * order_product.NOU AS TOAAL_PRICE from product join order_product on product.PCODE = order_product.PCODE where OCODE = NEWCODE; 
+end $$
+delimiter ;
+drop procedure new_procedure;
+call new_procedure(1001); 
+
+-- DELIMITER $$
+-- CREATE FUNCTION Func_Cube
+-- (
+--  Num INT
+-- )
+-- RETURNS INT 
+-- DETERMINISTIC
+-- BEGIN
+--     DECLARE TotalCube INT;
+--     SET TotalCube = Num * Num * Num;
+--     RETURN TotalCube; 
+-- END$$
+-- DELIMITER ;
+-- select Func_Cube(2) from product;
