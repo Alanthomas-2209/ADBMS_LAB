@@ -1,0 +1,88 @@
+use Employee
+
+db.employees.insertMany({
+eno : 1,
+eName : "Alan",
+dept : "Engineer",
+desig : "Software Engineer",
+salary : 50000,
+yoj : 2023,
+address : {
+	dno : "12",
+	street :  "Church Street",
+	locality : "Cherthala",
+	city : "Alappuzha"
+	}
+})
+
+db.employees.insertOne([{
+eno : 2,
+eName : "Jithin",
+dept : "Design",
+desig : "Software Designer",
+salary : 250000,
+yoj : 2023,
+address : {
+	dno : "22",
+	street :  "Outskirts",
+	locality : "Cherthala",
+	city : "Alappuzha"
+	}
+},
+{
+eno : 3,
+eName : "Rahul",
+dept : "Market",
+desig : "Market Analyser",
+salary : 150000,
+yoj : 2022,
+address : {
+	dno : "22",
+	street :  "Subway",
+	locality : "WhiteFiled",
+	city : "USA"
+	}
+},
+{
+eno : 4,
+eName : "Abhianad",
+dept : "Management",
+desig : "Assistant Engineer",
+salary : 150000,
+yoj : 2020,
+address : {
+	dno : "33",
+	street :  "DownTown",
+	locality : "pandalam",
+	city : "Pathanamthitta"
+	}
+},
+{
+eno : 5,
+eName : "Amjad",
+dept : "Engineer",
+desig : "Software Engineer",
+salary : 150000,
+yoj : 2020,
+address : {
+	dno : "12",
+	street :  "Mullaykal",
+	locality : "Cherthala",
+	city : "Alappuzha"
+	}
+},
+{
+eno : 6,
+eName : "Hrishi",
+dept : "Management",
+desig : "Manager",
+salary : 5000000,
+yoj : 2022,
+address : {
+	dno : "56",
+	street :  "Temple ground",
+	locality : "Kovalam",
+	city : "Trivandrum"
+	}
+}
+])
