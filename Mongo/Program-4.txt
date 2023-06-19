@@ -1,0 +1,39 @@
+use College
+
+db.students.insertOne({
+	SRN : 1,
+	SName : "Alan",
+	Department  : "MCA",
+})
+
+db.students.insertMany([
+{
+	SRN : 2,
+	SName : "Jithinr",
+	Department  : "EC",
+},
+{
+	SRN : 3,
+	SName : "Nidal",
+	Department  : "Chemical",
+},
+{
+	SRN : 4,
+	SName : "Catty",
+	Department  : "CS",
+},
+{
+	SRN : 5,
+	SName : "Abhinand",
+	Department  : "MCA",
+}
+])
+
+--Q1
+	db.students.find({ SName : {$regex : "^C"} } )
+
+--Q2
+	db.students.find({ SName : {$regex : "r$"} } )
+
+--Q3
+	db.students.find({ Department : {$regex : "cs", $options : "i"} } )

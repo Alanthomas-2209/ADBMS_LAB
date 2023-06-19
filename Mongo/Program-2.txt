@@ -103,4 +103,4 @@ db.student.insertMany([{
 	db.student.find({ Degree: "BCA" ,CGPA : {$gt : 6.0 ,$lt : 7.1}})
 
 --Q12
-	db.student.find({ Degree: "BCA" ,Semester: 2})
+	db.student.find({ Degree: "BCA", Semester: 2})

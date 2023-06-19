@@ -86,3 +86,59 @@ address : {
 	}
 }
 ])
+
+db.employees.insertOne({
+eno : 7,
+eName : "Shiva",
+dept : "Design",
+desig : "design developer",
+salary : 120000,
+yoj : 2020,
+address : {
+	dno : "98",
+	street :  "DIXIE AVENUE",
+	locality : "ATLANTA",
+	city : "Triavndrum"
+	}
+})
+
+--Q1
+	db.employees.find({salary: {$gte : 50000, $lte : 75000}})
+
+
+--Q2
+	db.employees.find({desig: "design developer"})
+
+--Q3
+	db.employees.find({eName : "Rahul"},{salary : 1})
+
+--Q4
+	db.employees.find({},{eName : 1,"address.city" : 1})
+
+--Q5
+	db.employees.updateMany({desig : "Developer"},{$inc :{salary : 5000}})
+
+--Q6
+	db.employees.updateMany({},{ $set :{age : 0} })
+
+--Q7
+	db.employees.updateOne({eName : "Rahul"},{ $unset : {yoj : ""}})
+
+--Q8
+	db.employees.updateOne({eName : "Rahul"},{ $set : { project : [] }})
+
+--Q9
+	db.employees.updateOne({eName : "Rahul"},{ $push : { project : { $each : ["p2","p3"] } } })
+
+--Q10
+	db.employees.updateOne({eName : "Rahul"},{ $pull : { project : "p3" } })
+
+--Q11
+	db.employees.updateOne({ eName : "Rahul" },
+		{ 
+		$set : { Contacts : { 
+			email : [],
+			Phone : []
+		} 
+	} 
+	})
