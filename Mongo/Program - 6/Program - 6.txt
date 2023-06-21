@@ -1,0 +1,141 @@
+use College
+
+db.studlist.insertOne({
+fname : "Alan",
+lname : "Thomas",
+gender : "Male",
+marks : "88",
+grade : "A+",
+department : "MCA",
+contact : 8493943586,
+city : "Alappuzha",
+})
+
+db.studlist.insertMany([
+{
+fname : "jithin",
+lname : "KJ",
+gender : "Male",
+marks : "99",
+grade : "S",
+department : "Mechanical",
+contact : 9893943586,
+city : "Alappuzha",
+},
+{
+fname : "shilpa",
+lname : "Nair",
+gender : "Female",
+marks : "85",
+grade : "A",
+department : "MCA",
+contact : 7653943586,
+city : "Thiruvananthapuram",
+},
+{
+fname : "Athira",
+lname : "Mohan",
+gender : "Female",
+marks : "92",
+grade : "A+",
+department : "MCA",
+contact : 9993943586,
+city : "Kollam",
+},
+{
+fname : "VAbhinand",
+lname : "T",
+gender : "Male",
+marks : "70",
+grade : "B+",
+department : "EC",
+contact : 9764543586,
+city : "Pathanamthitta",
+},
+{
+fname : "Hrishi",
+lname : "Raj",
+gender : "Male",
+marks : "93",
+grade : "A+",
+department : "Mechanical",
+contact : 6093943586,
+city : "Thiruvananthapuram",
+}
+])
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--Q1
+	db.studlist.aggregate([
+	{
+	$match :
+		{
+			$and : 
+				[
+          			{gender : "Female"},{department : "MCA"}
+				]
+		}
+	},
+	{
+		$project : 
+		{
+			_id : 0,
+			fullname : {$concat : ["$fname", " ", "$lname"]},
+			marks : 1
+		}
+	}
+	])
+
+--Q2
+	db.studlist.aggregate([
+	{
+	$match :
+		{
+			department : "MCA"
+		}
+	},
+	{
+	$sort : 
+		{
+			marks : -1
+		}
+	},
+	{
+			$limit : 1
+	}
+	])
+
+--Q3
+	db.studlist.aggregate([
+	{
+	$match :
+		{
+			$and : 
+				[
+          			{gender : "Male"},{grade : "A+"}
+				]
+		}
+	}
+	])
+
+--Q4
+	db.studlist.aggregate([
+	{
+	$match :
+		{department : "MCA"}
+	},
+	{
+	$sort:{
+		marks : -1
+		}
+	},
+	{ 
+	$project : {
+			_id : 0,
+			fullname : {$concat : ["$fname", " ", "$lname"] }
+		}
+	}
+	])
+
+--Q5

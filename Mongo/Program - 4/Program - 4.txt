@@ -37,3 +37,6 @@ db.students.insertMany([
 
 --Q3
 	db.students.find({ Department : {$regex : "cs", $options : "i"} } )
+
+--Q4
+	db.students.deleteMany({ Department : { $regex : "EC" ,$options : "i" }})
