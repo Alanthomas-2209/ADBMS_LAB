@@ -123,17 +123,20 @@ city : "Thiruvananthapuram",
 	db.studlist.aggregate([
 	{
 	$match :
-		{department : "MCA"}
+		{department : "Mechanical"}
 	},
 	{
-	$sort:{
+		$sort:{
 		marks : -1
-		}
+	}
+	},
+	{
+		$limit : 3
 	},
 	{ 
 	$project : {
-			_id : 0,
-			fullname : {$concat : ["$fname", " ", "$lname"] }
+		_id : 0,
+		fullname : {$concat : ["$fname", " ", "$lname"] }
 		}
 	}
 	])
