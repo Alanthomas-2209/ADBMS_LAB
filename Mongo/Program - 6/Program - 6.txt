@@ -4,7 +4,7 @@ db.studlist.insertOne({
 fname : "Alan",
 lname : "Thomas",
 gender : "Male",
-marks : "88",
+marks : 88,
 grade : "A+",
 department : "MCA",
 contact : 8493943586,
@@ -16,7 +16,7 @@ db.studlist.insertMany([
 fname : "jithin",
 lname : "KJ",
 gender : "Male",
-marks : "99",
+marks : 99,
 grade : "S",
 department : "Mechanical",
 contact : 9893943586,
@@ -26,7 +26,7 @@ city : "Alappuzha",
 fname : "shilpa",
 lname : "Nair",
 gender : "Female",
-marks : "85",
+marks : 85,
 grade : "A",
 department : "MCA",
 contact : 7653943586,
@@ -36,7 +36,7 @@ city : "Thiruvananthapuram",
 fname : "Athira",
 lname : "Mohan",
 gender : "Female",
-marks : "92",
+marks : 92,
 grade : "A+",
 department : "MCA",
 contact : 9993943586,
@@ -46,7 +46,7 @@ city : "Kollam",
 fname : "VAbhinand",
 lname : "T",
 gender : "Male",
-marks : "70",
+marks : 70,
 grade : "B+",
 department : "EC",
 contact : 9764543586,
@@ -56,10 +56,20 @@ city : "Pathanamthitta",
 fname : "Hrishi",
 lname : "Raj",
 gender : "Male",
-marks : "93",
+marks : 93,
 grade : "A+",
 department : "Mechanical",
 contact : 6093943586,
+city : "Thiruvananthapuram",
+},
+{
+fname : "shiva",
+lname : "krishnan",
+gender : "Male",
+marks : 80,
+grade : "A",
+department : "Mechanical",
+contact : 9993943586,
 city : "Thiruvananthapuram",
 }
 ])
@@ -142,3 +152,76 @@ city : "Thiruvananthapuram",
 	])
 
 --Q5
+	db.studlist.aggregate([
+	  {
+	    $match: {
+	      $and: [
+	        { gender: "Female" },
+        	{ marks: { $gt: 90 } }
+	      ]
+	    }
+	  },
+  	{
+    	$project: {
+	      _id: 0,
+	      fname: 1,
+	      lname: 1,
+	      grade: 1,
+	      marks: 1,
+	      contact: 1
+   	 }
+	}
+	])
+
+--Q6
+	db.studlist.aggregate([
+	  {
+	    $match: {
+	      marks: { $gt: 80, $lt: 90 }
+	    }
+	  }
+	])
+
+--Q7
+	db.studlist.aggregate([
+	  {
+	    $match: {
+	      fname: /^V/i
+	    }
+	  }
+	])
+
+--Q8
+	db.studlist.aggregate([
+	  {
+	    $match: {
+	      city: "Kollam"
+ 	   }
+ 	 }
+	])
+
+
+--Q9
+	db.studlist.aggregate([
+	  {
+	    $match: {
+	      city: {
+	        $nin: ["Kollam", "Thiruvananthapuram"]
+	      }
+	    }
+	  }
+	])
+
+
+--Q10
+	db.studlist.aggregate([
+	  {
+	    $match: {
+	      $and: [
+	        { gender: "Female" },
+	        { city: { $in: ["Kollam", "Thiruvananthapuram"] } }
+	      ]
+	    }
+	  }
+	])
+

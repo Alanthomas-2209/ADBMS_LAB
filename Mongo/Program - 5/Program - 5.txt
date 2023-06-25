@@ -1,0 +1,68 @@
+use candidate
+db.createCollection("details")
+
+db.details.insertMany([
+  { name: "Alan", gender: "male", age: 21, purchaseAmount: 1000 },
+  { name: "taylor", gender: "female", age: 22, purchaseAmount: 750 },
+  { name: "jithin", gender: "male", age: 28, purchaseAmount: 500 },
+  { name: "Sophia", gender: "female", age: 35, purchaseAmount: 1200 },
+  { name: "amjad", gender: "male", age: 22, purchaseAmount: 1000 },
+  { name: "katy", gender: "female", age: 22, purchaseAmount: 1500 },
+  { name: "shiva", gender: "male", age: 28, purchaseAmount: 50 },
+  { name: "rita", gender: "female", age: 35, purchaseAmount: 120 }
+])
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--Q1
+	db.details.find({
+ 	 $or: [
+ 	   { gender: "male" },
+ 	   { age: { $lt: 25 } }
+ 	 ]
+	})
+
+--Q2
+	db.details.aggregate([
+	  {
+	    $group: {
+	      _id: "$gender",
+	      totalPurchaseAmount: { $sum: "$purchaseAmount" }
+	    }
+	  }
+	])
+
+--Q3
+	db.details.aggregate([
+	  {
+	    $match: {
+	      age: { $gt: 25 }
+	    }
+	  },
+	  {
+	    $group: {
+	      _id: "$gender",
+	      averagePurchaseAmount: { $avg: "$purchaseAmount" }
+	    }
+	  }
+	])
+
+--Q4
+	db.details.aggregate([
+	  {
+	    $match: {
+	      age: { $gt: 25 }
+	    }
+	  },
+	  {
+	    $group: {
+	      _id: "$gender",
+ 	     averagePurchaseAmount: { $avg: "$purchaseAmount" }
+ 	   }
+	  },
+	  {
+	    $sort: {
+	      averagePurchaseAmount: 1
+	    }
+	  }
+	])

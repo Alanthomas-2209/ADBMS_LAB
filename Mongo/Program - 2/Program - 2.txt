@@ -8,15 +8,15 @@ db.student.insertOne({
 	"CGPA" : 7.7
 })
 
-db.student.insertOne({
+db.student.insertMany([
+{
 	"SRN" : "2",
 	"SName" : "jithin",
 	"Degree" : "BCA",
 	"Semester" : 6,
 	"CGPA" : 9.7
-})
-
-db.student.insertMany([{
+},
+{
 	"SRN" : "3",
 	"SName" : "Abhinand",
 	"Degree" : "Physics",
@@ -36,9 +36,8 @@ db.student.insertMany([{
 	"Degree" : "MCA",
 	"Semester" : 3,
 	"CGPA" : 8.4
-}])
-
-db.student.insertMany([{
+},
+{
 	"SRN" : "6",
 	"SName" : "akaash",
 	"Degree" : "Electronics",
@@ -58,7 +57,10 @@ db.student.insertMany([{
 	"Degree" : "MCA",
 	"Semester" : 2,
 	"CGPA" : 9.4
-}])
+}
+])
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Q1
 	db.student.find().pretty()
@@ -83,6 +85,7 @@ db.student.insertMany([{
   		{$match : {SRN: { $in : ["5","6","7"] } }},
   		{$sort : {CGPA : -1}}
 	])
+
 	OR
 
 	db.student.aggregate([

@@ -1,0 +1,33 @@
+use college
+db.createCollection("students")
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+db.students.insertMany([
+  {
+    "name": "Alan Thomas",
+    "age": 21,
+    "major": "Computer Science",
+    "gpa": 7.8
+  },
+  {
+    "name": "Abhinand",
+    "age": 22,
+    "major": "Physics",
+    "gpa": 9.9
+  },
+  {
+    "name": "Faiz Arif",
+    "age": 21,
+    "major": "Biology",
+    "gpa": 8.2
+  },
+  {
+    "name": "Nisha",
+    "age": 22,
+    "major": "Chemistry",
+    "gpa": 9.9
+  }
+])
+
+db.students.find()
