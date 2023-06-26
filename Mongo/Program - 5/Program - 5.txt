@@ -57,7 +57,7 @@ db.details.insertMany([
 	  {
 	    $group: {
 	      _id: "$gender",
- 	     averagePurchaseAmount: { $avg: "$purchaseAmount" }
+ 	      averagePurchaseAmount: { $avg: "$purchaseAmount" }
  	   }
 	  },
 	  {
