@@ -1,6 +1,7 @@
 use Employee
+db.createCollection("employees")
 
-db.employees.insertMany({
+db.employees.insertOne({
 eno : 1,
 eName : "Alan",
 dept : "Engineer",
@@ -15,7 +16,7 @@ address : {
 	}
 })
 
-db.employees.insertOne([{
+db.employees.insertMany([{
 eno : 2,
 eName : "Jithin",
 dept : "Design",
@@ -60,7 +61,7 @@ address : {
 {
 eno : 5,
 eName : "Amjad",
-dept : "Engineer",
+dept : "Engineering",
 desig : "Software Engineer",
 salary : 150000,
 yoj : 2020,
@@ -84,14 +85,12 @@ address : {
 	locality : "Kovalam",
 	city : "Trivandrum"
 	}
-}
-])
-
-db.employees.insertOne({
+},
+{
 eno : 7,
 eName : "Shiva",
-dept : "Design",
-desig : "design developer",
+dept : "Engineering",
+desig : "Developer",
 salary : 120000,
 yoj : 2020,
 address : {
@@ -100,7 +99,9 @@ address : {
 	locality : "ATLANTA",
 	city : "Triavndrum"
 	}
-})
+}
+])
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

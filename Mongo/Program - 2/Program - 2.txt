@@ -1,19 +1,20 @@
-use Students
+use Student
+db.createCollection("students")
 
-db.student.insertOne({
+db.students.insertOne({
 	"SRN" : "1",
 	"SName" : "Alan",
-	"Degree" : "MCA",
+	"Degree" : "BCA",
 	"Semester" : 2,
-	"CGPA" : 7.7
+	"CGPA" : 6.7
 })
 
-db.student.insertMany([
+db.students.insertMany([
 {
 	"SRN" : "2",
 	"SName" : "jithin",
 	"Degree" : "BCA",
-	"Semester" : 6,
+	"Semester" : 2,
 	"CGPA" : 9.7
 },
 {
@@ -63,47 +64,47 @@ db.student.insertMany([
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Q1
-	db.student.find().pretty()
+	db.students.find().pretty()
 
 --Q2
-	db.student.find({"Degree" : "BCA"}).pretty()
+	db.students.find({"Degree" : "BCA"}).pretty()
 
 --Q3
-	db.student.find().sort({SName : 1})
+	db.students.find().sort({SName : 1})
 
 --Q4
-	db.student.find().limit(5)
+	db.students.find().limit(5)
 
 --Q5	
-	db.student.find().skip(4).limit(3)
+	db.students.find().skip(4).limit(3)
 
 --Q6
-	db.student.find({SName : "Anu"}).pretty()
+	db.students.find({SName : "Anu"}).pretty()
 
 --Q7
-	db.student.aggregate([
+	db.students.aggregate([
   		{$match : {SRN: { $in : ["5","6","7"] } }},
   		{$sort : {CGPA : -1}}
 	])
 
 	OR
 
-	db.student.aggregate([
+	db.students.aggregate([
  		 {$match : { $or : [ {SRN : "5"}, {SRN : "6"},{SRN: "7"} ] } },
  		 {$sort : {CGPA : -1}}
 		])
 
 --Q8
-	db.student.count({Degree: "BCA"})
+	db.students.count({Degree: "BCA"})
 
 --Q9
-	db.student.find({},{ _id: 0,Degree:1})
+	db.students.find({},{ _id: 0,Degree:1})
 
 --Q10
-	db.student.distinct("Degree")
+	db.students.distinct("Degree")
 
 --Q11
-	db.student.find({ Degree: "BCA" ,CGPA : {$gt : 6.0 ,$lt : 7.1}})
+	db.students.find({ Degree: "BCA" ,CGPA : {$gt : 6.0 ,$lt : 7.1}})
 
 --Q12
-	db.student.find({ Degree: "BCA", Semester: 2})
+	db.students.find({ Degree: "BCA", Semester: 2})
